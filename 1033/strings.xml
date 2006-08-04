@@ -1,0 +1,23 @@
+<strings>
+  <GADGET_NAME>HOT or NOT</GADGET_NAME>
+  <GADGET_DESCRIPTION>View good looking people on HOT or NOT.</GADGET_DESCRIPTION>
+  <GADGET_ABOUT_TEXT>HOT or NOT
+Copyright (c) 2006 Ron Huang
+This is my first Google Desktop Gadget. So be gentle.
+Fan of HOT or NOT? This gadget is for you. This allows you to view the good looking people on HOT or NOT.</GADGET_ABOUT_TEXT>
+
+  <strRating>Rating: </strRating>
+
+  <strWomenAndMen>Women and Men</strWomenAndMen>
+  <strWomenOnly>Women only</strWomenOnly>
+  <strMenOnly>Men only</strMenOnly>
+
+  <strAnyAge>Of any Age</strAnyAge>
+  <strAge18To25>Ages 18-25</strAge18To25>
+  <strAge26To32>Ages 26-32</strAge26To32>
+  <strAge33To40>Ages 33-40</strAge33To40>
+  <strOver40>Over 40</strOver40>
+
+  <strRefresh>Refresh</strRefresh>
+  <strSlideshow>Slideshow</strSlideshow>
+</strings>

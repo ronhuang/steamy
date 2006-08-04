@@ -1,0 +1,36 @@
+<view width="200" height="200" resizable="true" showCaptionAlways="true"
+      caption="&GADGET_NAME;" contentFlags="gddContentFlagHaveDetails"
+      onsizing="view_onsizing()" onopen="view_onopen()"
+      onmouseover="view_onmouseover()" onmouseout="view_onmouseout()">
+
+  <button name="vote1" onclick="vote_onclick(1)" onmouseover="vote_onmouseover(1)" onmouseout="vote_onmouseout(1)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="1"/>
+  <button name="vote2" onclick="vote_onclick(2)" onmouseover="vote_onmouseover(2)" onmouseout="vote_onmouseout(2)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="2"/>
+  <button name="vote3" onclick="vote_onclick(3)" onmouseover="vote_onmouseover(3)" onmouseout="vote_onmouseout(3)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="3"/>
+  <button name="vote4" onclick="vote_onclick(4)" onmouseover="vote_onmouseover(4)" onmouseout="vote_onmouseout(4)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="4"/>
+  <button name="vote5" onclick="vote_onclick(5)" onmouseover="vote_onmouseover(5)" onmouseout="vote_onmouseout(5)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="5"/>
+  <button name="vote6" onclick="vote_onclick(6)" onmouseover="vote_onmouseover(6)" onmouseout="vote_onmouseout(6)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="6"/>
+  <button name="vote7" onclick="vote_onclick(7)" onmouseover="vote_onmouseover(7)" onmouseout="vote_onmouseout(7)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="7"/>
+  <button name="vote8" onclick="vote_onclick(8)" onmouseover="vote_onmouseover(8)" onmouseout="vote_onmouseout(8)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="8"/>
+  <button name="vote9" onclick="vote_onclick(9)" onmouseover="vote_onmouseover(9)" onmouseout="vote_onmouseout(9)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="9"/>
+  <button name="vote10" onclick="vote_onclick(10)" onmouseover="vote_onmouseover(10)" onmouseout="vote_onmouseout(1)"
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="10"/>
+
+  <img name="theimage" src="honlogo.gif" y="18"/>
+
+  <label name="rating" width="100%" align="center" visible="false">&strRating;</label>
+
+  <label name="myvote" width="100%" align="right" visible="false" y="18" font="Comic Sans MS" size="20" color="#88000000"/>
+
+  <script src="queue.js" />
+  <script src="profile.js" />
+  <script src="main.js" />
+</view>
