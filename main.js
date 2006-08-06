@@ -127,6 +127,9 @@ function switchProfile() {
         btnOption.downImage = OPTION_IMG[2];
     }
 
+    // Maintain the Open link
+    open.href = gProfile.link;
+
     // Slideshow
     configSlideshow();
 }
@@ -214,7 +217,6 @@ function moveVoteOptions() {
     for (var i = 0; i < OPTION_COUNT; i++) {
         var btnOption = eval("vote" + (i + 1));
         btnOption.x = startPos + OPTION_WIDTH * i + OPTION_MARGIN;
-        btnOption.y = OPTION_MARGIN;
     }
 }
 
@@ -241,9 +243,6 @@ function moveRating() {
 
 function vote_onmouseover(idx) {
     myvote.innerText = "" + idx;
-
-    myvote.x = theimage.x;
-    myvote.width = theimage.width;
     myvote.visible = true;
 }
 
@@ -274,6 +273,40 @@ function vote_onclick(vote) {
     btnOption.image = OPTION_SEL_IMG[0];
     btnOption.overImage = OPTION_SEL_IMG[1];
     btnOption.downImage = OPTION_SEL_IMG[2];
+}
+
+function share_onclick() {
+    if (!friends.visible) {
+        populateFriendList();
+        friends.visible = true;
+    } else {
+        friends.visible = false;
+    }
+}
+
+function populateFriendList() {
+    var count = friends.children.count;
+    while(count--) {
+        var child = friends.children(count);
+        friends.removeElement(child);
+    }
+
+    var frs = googleTalk.friends.toArray();
+    var y = 5;
+    for (var i = 0; i < frs.length; i++) {
+        var fr = frs[i];
+
+        var el = friends.appendElement('<a x="5" y="' + y + '" width="245" ' +
+                                       'onclick="OnClick(\'' + fr.user_id + '\')"/>');
+
+        y += 15;
+    }
+
+    friends.width = 245;
+    friends.height = y;
+}
+
+function friend_onclick(uid) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////

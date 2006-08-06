@@ -3,32 +3,37 @@
       onsizing="view_onsizing()" onopen="view_onopen()"
       onmouseover="view_onmouseover()" onmouseout="view_onmouseout()">
 
+  <div x="90%" y="0" width="11%" height="18" background="#C3D9FF"/>
+  <label name="myvote" x="90%" y="0" width="11%" align="center" bold="true" visible="false"/>
+
+  <div x="0" y="18" width="100%" height="16" background="#C3D9FF"/>
   <button name="vote1" onclick="vote_onclick(1)" onmouseover="vote_onmouseover(1)" onmouseout="vote_onmouseout(1)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="1"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="1" y="20"/>
   <button name="vote2" onclick="vote_onclick(2)" onmouseover="vote_onmouseover(2)" onmouseout="vote_onmouseout(2)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="2"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="2" y="20"/>
   <button name="vote3" onclick="vote_onclick(3)" onmouseover="vote_onmouseover(3)" onmouseout="vote_onmouseout(3)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="3"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="3" y="20"/>
   <button name="vote4" onclick="vote_onclick(4)" onmouseover="vote_onmouseover(4)" onmouseout="vote_onmouseout(4)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="4"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="4" y="20"/>
   <button name="vote5" onclick="vote_onclick(5)" onmouseover="vote_onmouseover(5)" onmouseout="vote_onmouseout(5)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="5"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="5" y="20"/>
   <button name="vote6" onclick="vote_onclick(6)" onmouseover="vote_onmouseover(6)" onmouseout="vote_onmouseout(6)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="6"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="6" y="20"/>
   <button name="vote7" onclick="vote_onclick(7)" onmouseover="vote_onmouseover(7)" onmouseout="vote_onmouseout(7)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="7"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="7" y="20"/>
   <button name="vote8" onclick="vote_onclick(8)" onmouseover="vote_onmouseover(8)" onmouseout="vote_onmouseout(8)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="8"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="8" y="20"/>
   <button name="vote9" onclick="vote_onclick(9)" onmouseover="vote_onmouseover(9)" onmouseout="vote_onmouseout(9)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="9"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="9" y="20"/>
   <button name="vote10" onclick="vote_onclick(10)" onmouseover="vote_onmouseover(10)" onmouseout="vote_onmouseout(1)"
-          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="10"/>
+          image="option.png" overImage="option_over.png" downImage="option_down.png" tooltip="10" y="20"/>
 
-  <img name="theimage" src="honlogo.gif" y="18"/>
-
+  <img name="theimage" src="honlogo.gif" y="36"/>
   <label name="rating" width="100%" align="center" visible="false">&strRating;</label>
 
-  <label name="myvote" width="100%" align="right" visible="false" y="18" font="Comic Sans MS" size="20" color="#88000000"/>
+  <a name="open" x="0" y="0" overColor="#F47C00" href="http://hotornot.com/">Open</a>
+
+  <!--<div name="friends" x="0" y="18" width="0" height="0" background="#FAD163" visible="false"/>-->
 
   <script src="queue.js" />
   <script src="profile.js" />
