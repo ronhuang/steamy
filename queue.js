@@ -1,45 +1,38 @@
 function Queue(maxLength) {
     this.maxLength = maxLength;
+    this.queue = [];
+};
 
-    this.queue = new Array();
-    this.length = 0;
-    this.queueSpace = 0;
+Queue.prototype.length = function() {
+    return this.queue.length;
+};
 
-    this.enqueue = function(item) {
-        if (this.length >= this.maxLength)
-            return false;
+Queue.prototype.push = function(item) {
+    if (this.queue.length >= this.maxLength)
+        return false;
 
-        this.length++;
-        this.queue[this.queue.length++] = item;
-        return true;
-    };
+    this.queue.push(item);
+    return true;
+};
 
-    this.dequeue = function() {
-        var item = undefined;
-        if (this.queue.length) {
-            this.length--;
-            item = this.queue[this.queueSpace];
-            if ((++this.queueSpace) * 2 >= this.queue.length) {
-                for (var i = this.queueSpace; i < this.queue.length; i++)
-                    this.queue[i - this.queueSpace] = this.queue[i];
-                this.queue.length -= this.queueSpace;
-                this.queueSpace = 0;
-            }
-        }
-        return item;
-    };
-
-    this.full = function() {
-        return (this.length >= this.maxLength);
-    };
-
-    this.empty = function() {
-        var item = undefined;
-        while (undefined != (item = this.dequeue()))
-            delete item;
-
-        this.queue.length = 0;
-        this.length = 0;
-        this.queueSpace = 0;
+Queue.prototype.pop = function() {
+    var item = undefined;
+    if (this.queue.length) {
+        item = this.queue.pop();
     }
+    return item;
+};
+
+Queue.prototype.full = function() {
+    return this.queue.length >= this.maxLength;
+};
+
+Queue.prototype.moreThanHalf = function() {
+    return (this.queue.length > (this.maxLength / 2));
 }
+
+Queue.prototype.empty = function() {
+    var item = undefined;
+    while (undefined != (item = this.pop()))
+        delete item;
+};

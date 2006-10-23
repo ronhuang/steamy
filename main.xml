@@ -37,5 +37,6 @@
 
   <script src="queue.js" />
   <script src="profile.js" />
+  <script src="utils.js" />
   <script src="main.js" />
 </view>

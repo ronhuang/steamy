@@ -6,7 +6,7 @@ var OPTION_MARGIN = 1;
 var OPTION_COUNT = 10;
 var OPTION_WIDTH = OPTION_SIZE + OPTION_MARGIN * 2;
 
-var PROFILE_URL = "http://services.hotornot.com/rest/?app_key=485WGPUUQSJ&method=Rate.getRandomProfile&get_rate_info=true&retrieve_num=1&gender=%s&min_age=%s&max_age=%s";
+var PROFILE_URL = "http://services.hotornot.com/rest/?app_key=485WGPUUQSJ&method=Rate.getRandomProfile&get_rate_info=true&gender=%s&min_age=%s&max_age=%s&retrieve_num=%d";
 var VOTE_URL = "http://services.hotornot.com/rest/?app_key=485WGPUUQSJ&method=Rate.submitVote&eid=%s&vote=%s";
 
 var GENDERS = [strWomenAndMen, strWomenOnly, strMenOnly];
@@ -17,7 +17,7 @@ var OPTION_IMG = ["option.png", "option_over.png", "option_down.png"];
 var OPTION_SEL_IMG = ["optionSel.png", "optionSel_over.png", "optionSel_down.png"];
 
 var SLIDESHOW_INTERVAL = 15000;
-var MAX_QUEUE_LENGTH = 10;
+var MAX_QUEUE_LENGTH = 12;
 
 ///////////////////////////////////////////////////////////////////////////////
 // Config default properties.
@@ -41,6 +41,7 @@ options.defaultValue("slideshow_interval") = SLIDESHOW_INTERVAL;
 var profileQueue = new Queue(MAX_QUEUE_LENGTH);
 var gProfile = undefined;
 
+var profiles_timer_token = null;
 var slideshow_timer_token = null;
 var slideshow_previous_value = options(strSlideshow);
 
@@ -53,58 +54,59 @@ plugin.onAddCustomMenuItems = addCustomMenuItems;
 // Functions related to fetch content from the Internet.
 ///////////////////////////////////////////////////////////////////////////////
 function prepareNewProfiles() {
-    if (profileQueue.full()) {
-        setTimeout(prepareNewProfiles, options("slideshow_interval"));
+    if (profileQueue.moreThanHalf()) {
+        if (null != profiles_timer_token)
+            clearInterval(profiles_timer_token);
+        profiles_timer_token = setTimeout(prepareNewProfiles, options("slideshow_interval"));
         return;
     }
 
-    var profileDom = new ActiveXObject("Microsoft.XMLDOM");
-    profileDom.onreadystatechange = function () {
-        if (4 == profileDom.readyState) {
-            var lProfile = new Profile();
-            lProfile.parseDom(profileDom);
+    var profilesDom = new ActiveXObject("Microsoft.XMLDOM");
+    profilesDom.onreadystatechange = function () {
+        if (4 == profilesDom.readyState) {
+            var profiles = new Profiles();
+            profiles.parseDom(profilesDom);
 
-            if (lProfile.isValid())
-                prepareProfilePicture(lProfile);
-            else {
-                delete lProfile;
-                // Something might be wrong with the connection.
-                // To avoid 100% CPU usage when connection down, use timer instead.
-                // XXX: Use the slideshow timer interval?
-                setTimeout(prepareNewProfiles, options("slideshow_interval"));
+            var i = profiles.length();
+            while (i--) {
+                prepareProfilePicture(profiles.pop());
             }
         }
     };
 
-    profileDom.load(genProfileUrl());
+    profilesDom.load(getFetchProfilesUrl());
+
+    if (null != profiles_timer_token)
+        clearInterval(profiles_timer_token);
+    profiles_timer_token = setTimeout(prepareNewProfiles, options("slideshow_interval"));
 }
 
-function prepareProfilePicture(lProfile) {
+function prepareProfilePicture(profile) {
     var profileReq = new XMLHttpRequest();
-    profileReq.onreadystatechange = function () {
+
+    profileReq.onreadystatechange = function() {
         if (4 == profileReq.readyState) {
             if (200 == profileReq.status) {
-                lProfile.image = profileReq.responseStream;
-                profileQueue.enqueue(lProfile);
-            } else
-                delete lProfile;
+                profile.image = profileReq.responseStream;
+                profileQueue.push(profile);
 
-            prepareNewProfiles();
+                // Show the first retrieved profile asap.
+                if (undefined == gProfile)
+                    switchProfile();
+            } else {
+                freeProfile(profile);
+            }
         }
     };
 
-    profileReq.open("GET", lProfile.url, true);
+    profileReq.open("GET", profile.url, true);
     profileReq.send();
 }
 
 function switchProfile() {
-    if (undefined != gProfile && null != gProfile &&
-        undefined != gProfile.image && null != gProfile.image) {
-        delete gProfile.image;
-        delete gProfile;
-    }
+    freeProfile(gProfile);
 
-    gProfile = profileQueue.dequeue();
+    gProfile = profileQueue.pop();
     if (undefined == gProfile) {
         setTimeout(switchProfile, options("slideshow_interval"));
         return;
@@ -139,7 +141,6 @@ function switchProfile() {
 ///////////////////////////////////////////////////////////////////////////////
 function view_onopen() {
     prepareNewProfiles();
-    setTimeout(switchProfile, options("slideshow_interval"));
 }
 
 function view_onsizing() {
@@ -196,6 +197,9 @@ function genderMenuHandler(item) {
     options(item) = gddMenuItemFlagChecked;
 
     profileQueue.empty();
+    freeProfile(gProfile);
+    gProfile = undefined; // Force showing the first profile asap.
+    prepareNewProfiles();
 }
 
 function ageMenuHandler(item) {
@@ -208,6 +212,9 @@ function ageMenuHandler(item) {
     options(item) = gddMenuItemFlagChecked;
 
     profileQueue.empty();
+    freeProfile(gProfile);
+    gProfile = undefined; // Force showing the first profile asap.
+    prepareNewProfiles();
 }
 
 function moveVoteOptions() {
@@ -251,7 +258,7 @@ function vote_onmouseout(idx) {
 }
 
 function vote_onclick(vote) {
-    if (undefined == gProfile || null == gProfile || 0 == gProfile.emid.length)
+    if (undefined == gProfile || null == gProfile || 0 == gProfile.eid.length)
         return;
 
     var voteReq = new XMLHttpRequest();
@@ -264,7 +271,7 @@ function vote_onclick(vote) {
         }
     };
 
-    var url = sprintf(VOTE_URL, gProfile.emid, vote);
+    var url = sprintf(VOTE_URL, gProfile.eid, vote);
     voteReq.open("GET", url, true);
     voteReq.send();
 
@@ -312,7 +319,7 @@ function friend_onclick(uid) {
 ///////////////////////////////////////////////////////////////////////////////
 // Utility functions.
 ///////////////////////////////////////////////////////////////////////////////
-function genProfileUrl() {
+function getFetchProfilesUrl() {
     var gender = "female";
     var age_min = "20";
     var age_max = "30";
@@ -332,7 +339,7 @@ function genProfileUrl() {
         }
     }
 
-    return sprintf(PROFILE_URL, gender, age_min, age_max);
+    return sprintf(PROFILE_URL, gender, age_min, age_max, MAX_QUEUE_LENGTH / 2);
 }
 
 function disableSlideshow() {
@@ -344,53 +351,7 @@ function disableSlideshow() {
 
 function configSlideshow() {
     disableSlideshow();
-    if (options(strSlideshow)) {
+    if (gddMenuItemFlagChecked == options(strSlideshow)) {
         slideshow_timer_token = setTimeout(switchProfile, options("slideshow_interval"));
     }
-}
-
-function sprintf() {
-    if (!arguments || arguments.length < 1 || !RegExp) {
-        return;
-    }
-    var str = arguments[0];
-    var re = /([^%]*)%('.|0|\x20)?(-)?(\d+)?(\.\d+)?(%|b|c|d|u|f|o|s|x|X)(.*)/;
-    var a = b = [], numSubstitutions = 0, numMatches = 0;
-
-    while (a = re.exec(str)) {
-        var leftpart = a[1], pPad = a[2], pJustify = a[3], pMinLength = a[4];
-        var pPrecision = a[5], pType = a[6], rightPart = a[7];
-
-        numMatches++;
-        if (pType == '%') {
-            subst = '%';
-        } else {
-            numSubstitutions++;
-            if (numSubstitutions >= arguments.length) {
-                alert('Error! Not enough function arguments (' + (arguments.length - 1) + ', excluding the string)\nfor the number of substitution parameters in string (' + numSubstitutions + ' so far).');
-            }
-            var param = arguments[numSubstitutions];
-            var pad = '';
-            if (pPad && pPad.substr(0,1) == "'") pad = leftpart.substr(1,1);
-            else if (pPad) pad = pPad;
-            var justifyRight = true;
-            if (pJustify && pJustify === "-") justifyRight = false;
-            var minLength = -1;
-            if (pMinLength) minLength = parseInt(pMinLength);
-            var precision = -1;
-            if (pPrecision && pType == 'f') precision = parseInt(pPrecision.substring(1));
-            var subst = param;
-            if (pType == 'b') subst = parseInt(param).toString(2);
-            else if (pType == 'c') subst = String.fromCharCode(parseInt(param));
-            else if (pType == 'd') subst = parseInt(param) ? parseInt(param) : 0;
-            else if (pType == 'u') subst = Math.abs(param);
-            else if (pType == 'f') subst = (precision > -1) ? Math.round(parseFloat(param) * Math.pow(10, precision)) / Math.pow(10, precision): parseFloat(param);
-            else if (pType == 'o') subst = parseInt(param).toString(8);
-            else if (pType == 's') subst = param;
-            else if (pType == 'x') subst = ('' + parseInt(param).toString(16)).toLowerCase();
-            else if (pType == 'X') subst = ('' + parseInt(param).toString(16)).toUpperCase();
-        }
-        str = leftpart + subst + rightPart;
-    }
-    return str;
 }

@@ -1,42 +1,83 @@
+///////////////////////////////////////////////////////////////////////////////
+// Profile class.
+///////////////////////////////////////////////////////////////////////////////
 function Profile() {
     this.url = "";
     this.rating = "";
     this.age = "";
-    this.emid = "";
+    this.eid = "";
     this.link = "";
     this.image = undefined;
+}
 
-    this.isValid = function() {
-        return (this.url.length &&
-                this.rating.length &&
-                this.age.length &&
-                this.emid.length &&
-                this.link.length) ? true : false;
-    };
+Profile.prototype.isValid = function() {
+    return (this.url.length &&
+            this.age.length &&
+            this.eid.length &&
+            this.link.length) ? true : false;
+};
 
-    this.parseDom = function(dom) {
-        var eP = dom.getElementsByTagName("pic_url");
-        var eR = dom.getElementsByTagName("rating");
-        var eA = dom.getElementsByTagName("age");
-        var eE = dom.getElementsByTagName("emid");
-        var eL = dom.getElementsByTagName("rate_link");
+///////////////////////////////////////////////////////////////////////////////
+// Utility for Profile class.
+///////////////////////////////////////////////////////////////////////////////
+function freeProfile(profile) {
+    if (undefined != profile && null != profile) {
+        var image = profile.image;
+        if (undefined != image && null != image)
+            delete image;
+
+        delete profile;
+    }
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Profiles class.
+///////////////////////////////////////////////////////////////////////////////
+function Profiles() {
+    this._profiles = [];
+}
+
+Profiles.prototype.length = function() {
+    return this._profiles.length;
+};
+
+Profiles.prototype.parseDom = function(dom) {
+    var profiles = dom.getElementsByTagName("rate_profile");
+
+    for (var i = 0; i < profiles.length; i++) {
+        var eP = profiles[i].getElementsByTagName("pic_url");
+        var eR = profiles[i].getElementsByTagName("rating");
+        var eA = profiles[i].getElementsByTagName("age");
+        var eE = profiles[i].getElementsByTagName("eid");
+        var eL = profiles[i].getElementsByTagName("rate_link");
 
         if (eP == null || eP.length <= 0 ||
             eR == null || eR.length <= 0 ||
             eA == null || eA.length <= 0 ||
             eE == null || eE.length <= 0 ||
             eL == null || eL.length <= 0)
-            return;
+            continue;
 
         if (eP.item(0) == null || eR.item(0) == null ||
             eA.item(0) == null || eE.item(0) == null ||
             eL.item(0) == null)
-            return;
+            continue;
 
-        this.url  = eP.item(0).text;
-        this.rating = eR.item(0).text;
-        this.age = eA.item(0).text;
-        this.emid = eE.item(0).text;
-        this.link = eL.item(0).text;
-    };
+        var profile = new Profile();
+        profile.url  = eP.item(0).text;
+        profile.rating = eR.item(0).text;
+        profile.age = eA.item(0).text;
+        profile.eid = eE.item(0).text;
+        profile.link = eL.item(0).text;
+
+        if (profile.isValid()) {
+            this._profiles.push(profile);
+        } else {
+            delete profile;
+        }
+    }
+};
+
+Profiles.prototype.pop = function() {
+    return this._profiles.pop();
 }
