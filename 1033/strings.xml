@@ -17,6 +17,9 @@ Fan of HOT or NOT? You are in luck. This gadget allows you to check out the good
   <strAge33To40>Ages 33-40</strAge33To40>
   <strOver40>Over 40</strOver40>
 
-  <strRefresh>Refresh</strRefresh>
   <strSlideshow>Slideshow</strSlideshow>
+
+  <strImageToolTip>Click on the radio buttons above to vote.</strImageToolTip>
+  <strOpenToolTip>Opens this person's page with browser.</strOpenToolTip>
+  <strRatingToolTip>The average rating others gave to this person.</strRatingToolTip>
 </strings>

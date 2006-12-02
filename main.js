@@ -152,16 +152,11 @@ function view_onsizing() {
 
 function view_onmouseover() {
     // Temporarily disable slideshow.
-    slideshow_previous_value = options(strSlideshow);
-    options(strSlideshow) = 0;
-
     disableSlideshow();
 }
 
 function view_onmouseout() {
     // Return slideshow option to previous value.
-    options(strSlideshow) = slideshow_previous_value;
-
     configSlideshow();
 }
 
@@ -228,13 +223,12 @@ function moveVoteOptions() {
 }
 
 function resizeTheImage(current) {
-    if (theimage.srcWidth < current.width) {
-        theimage.width = theimage.srcWidth;
-        theimage.height = theimage.srcHeight;
-    } else {
-        theimage.width = current.width;
-        theimage.height = theimage.srcHeight * current.width / theimage.srcWidth;
-    }
+    // The 28 is for the "rating" label to show.
+    var ratio = Math.min(current.width / theimage.srcWidth,
+                         (current.height - theimage.y - 28) / theimage.srcHeight);
+
+    theimage.width = theimage.srcWidth * ratio;
+    theimage.height = theimage.srcHeight * ratio;
 }
 
 function moveTheImage(current) {
@@ -253,7 +247,7 @@ function vote_onmouseover(idx) {
     myvote.visible = true;
 }
 
-function vote_onmouseout(idx) {
+function vote_onmouseout() {
     myvote.visible = false;
 }
 
@@ -280,40 +274,6 @@ function vote_onclick(vote) {
     btnOption.image = OPTION_SEL_IMG[0];
     btnOption.overImage = OPTION_SEL_IMG[1];
     btnOption.downImage = OPTION_SEL_IMG[2];
-}
-
-function share_onclick() {
-    if (!friends.visible) {
-        populateFriendList();
-        friends.visible = true;
-    } else {
-        friends.visible = false;
-    }
-}
-
-function populateFriendList() {
-    var count = friends.children.count;
-    while(count--) {
-        var child = friends.children(count);
-        friends.removeElement(child);
-    }
-
-    var frs = googleTalk.friends.toArray();
-    var y = 5;
-    for (var i = 0; i < frs.length; i++) {
-        var fr = frs[i];
-
-        var el = friends.appendElement('<a x="5" y="' + y + '" width="245" ' +
-                                       'onclick="OnClick(\'' + fr.user_id + '\')"/>');
-
-        y += 15;
-    }
-
-    friends.width = 245;
-    friends.height = y;
-}
-
-function friend_onclick(uid) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////

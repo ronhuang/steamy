@@ -1,0 +1,25 @@
+<strings>
+  <GADGET_NAME>HOT or NOT</GADGET_NAME>
+  <GADGET_DESCRIPTION>在桌面上欣賞辣妹、帥哥。</GADGET_DESCRIPTION>
+  <GADGET_ABOUT_TEXT>HOT or NOT
+Copyright (c) 2006 Ron Huang
+看新聞、養花、預報明天的氣候，如果 Google Desktop 只有提供這些，是不是太無聊了。還好這個外掛讓您在桌面上也可以欣賞 HOT or NOT (http://hotornot.com/) 上的辣妹、帥哥。欣賞之餘，還可以對她們投票。</GADGET_ABOUT_TEXT>
+
+  <strRating>分數： </strRating>
+
+  <strWomenAndMen>女性與男性</strWomenAndMen>
+  <strWomenOnly>只有女性</strWomenOnly>
+  <strMenOnly>只有男性</strMenOnly>
+
+  <strAnyAge>任意年齡</strAnyAge>
+  <strAge18To25>18 到 25 歲</strAge18To25>
+  <strAge26To32>26 到 32 歲</strAge26To32>
+  <strAge33To40>33 到 40 歲</strAge33To40>
+  <strOver40>40 歲以上</strOver40>
+
+  <strSlideshow>自動放映</strSlideshow>
+
+  <strImageToolTip>請按上面的單選按鈕來投票。</strImageToolTip>
+  <strOpenToolTip>在瀏覽器顯示這位的頁面。</strOpenToolTip>
+  <strRatingToolTip>別人給這位的分數。</strRatingToolTip>
+</strings>
