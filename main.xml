@@ -51,7 +51,7 @@
           y="38"/>
 
   <!-- The image that shows the person -->
-  <img name="theimage" src="sample.png" tooltip="&strImageToolTip;"/>
+  <img name="theimage" src="sample.png" y="54" tooltip="&strImageToolTip;"/>
 
   <!-- Average rating -->
   <label name="rating" width="100%" align="center" visible="false"
