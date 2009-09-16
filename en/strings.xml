@@ -3,7 +3,8 @@
   <GADGET_DESCRIPTION>Check out attrative people.</GADGET_DESCRIPTION>
   <GADGET_ABOUT_TEXT>Steamy
 Copyright (c) 2009 Ron Huang
-This gadget allows you to check out the attrative people and rate them.</GADGET_ABOUT_TEXT>
+This gadget allows you to check out the attrative people and rate them.
+The data are from http://www.hotornot.com/.</GADGET_ABOUT_TEXT>
 
   <strRating>Rating: </strRating>
 

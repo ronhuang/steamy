@@ -3,13 +3,20 @@
 	<id>EC7043B6-C940-4CBB-9372-0625118016A1</id>
 	<name>&GADGET_NAME;</name>
 	<description>&GADGET_DESCRIPTION;</description>
-	<version>0.3.0</version>
+	<version>0.3.1</version>
 	<author>Ron Huang</author>
 	<authorEmail>ronhuang@gmail.com</authorEmail>
+    <category>lifestyle,fun_games</category>
+    <thumbnailUrl>FIXME</thumbnailUrl>
+    <screenshotUrl>FIXME</screenshotUrl>
 	<authorWebsite>http://ronhuang.googlepages.com/googledesktopgadget</authorWebsite>
-	<copyright>Copyright (c) 2006 Ron Huang</copyright>
+	<copyright>Copyright (c) 2009 Ron Huang</copyright>
 	<aboutText>&GADGET_ABOUT_TEXT;</aboutText>
 	<smallIcon>smallIcon.png</smallIcon>
 	<icon>icon.png</icon>
   </about>
+  <platform>
+	<windows minimumGadgetHostVersion="4.2006.508.0"/>
+	<mac supported="no"/>
+  </platform>
 </gadget>
