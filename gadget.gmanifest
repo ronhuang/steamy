@@ -1,16 +1,15 @@
 <gadget minimumGoogleDesktopVersion="4.2006.508.0">
-	<about>
-		<id>EC7043B6-C940-4CBB-9372-0625118016A1</id>
-		<name>&GADGET_NAME;</name>
-		<description>&GADGET_DESCRIPTION;</description>
-		<version>0.3.0</version>
-		<author>Ron Huang</author>
-		<authorEmail>ronhuang@gmail.com</authorEmail>
-		<authorWebsite>http://ronhuang.googlepages.com/googledesktopgadget</authorWebsite>
-		<copyright>Copyright (c) 2006 Ron Huang</copyright>
-		<aboutText>&GADGET_ABOUT_TEXT;</aboutText>
-		<smallIcon>plugin_small.gif</smallIcon>
-		<icon>plugin_large.gif</icon>
-		<eventAPI/>
-	</about>
+  <about>
+	<id>EC7043B6-C940-4CBB-9372-0625118016A1</id>
+	<name>&GADGET_NAME;</name>
+	<description>&GADGET_DESCRIPTION;</description>
+	<version>0.3.0</version>
+	<author>Ron Huang</author>
+	<authorEmail>ronhuang@gmail.com</authorEmail>
+	<authorWebsite>http://ronhuang.googlepages.com/googledesktopgadget</authorWebsite>
+	<copyright>Copyright (c) 2006 Ron Huang</copyright>
+	<aboutText>&GADGET_ABOUT_TEXT;</aboutText>
+	<smallIcon>smallIcon.png</smallIcon>
+	<icon>icon.png</icon>
+  </about>
 </gadget>
