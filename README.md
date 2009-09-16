@@ -1,4 +1,5 @@
-Fan of HOT or NOT? You are in luck. This gadget allows you to check out the good looking people on HOT or NOT using Google Desktop Gadget.
+This gadget allows you to check out the attrative people and rate them
+using Google Desktop Gadget.
 
 Features:
 

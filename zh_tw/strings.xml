@@ -1,9 +1,9 @@
 <strings>
-  <GADGET_NAME>HOT or NOT</GADGET_NAME>
-  <GADGET_DESCRIPTION>在桌面上欣賞辣妹、帥哥。</GADGET_DESCRIPTION>
-  <GADGET_ABOUT_TEXT>HOT or NOT
-Copyright (c) 2006 Ron Huang
-看新聞、養花、預報明天的氣候，如果 Google Desktop 只有提供這些，是不是太無聊了。還好這個外掛讓您在桌面上也可以欣賞 HOT or NOT (http://hotornot.com/) 上的辣妹、帥哥。欣賞之餘，還可以對她們投票。</GADGET_ABOUT_TEXT>
+  <GADGET_NAME>Steamy</GADGET_NAME>
+  <GADGET_DESCRIPTION>欣賞辣妹、帥哥。</GADGET_DESCRIPTION>
+  <GADGET_ABOUT_TEXT>Steamy
+Copyright (c) 2009 Ron Huang
+讓您欣賞網路上的辣妹、帥哥。欣賞之餘，還可以對她們投票。</GADGET_ABOUT_TEXT>
 
   <strRating>分數： </strRating>
 
