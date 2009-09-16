@@ -6,7 +6,7 @@
   <a name="open" x="0" y="18" overColor="#F47C00" href="http://hotornot.com/" tooltip="&strOpenToolTip;">Open</a>
 
   <!-- The selected vote -->
-  <label name="myvote" x="89%" y="18" width="10%" align="center" bold="true" visible="false"/>
+  <label name="myvote" x="89%" y="18" width="10%" align="center" bold="true" visible="false" color="#888888"/>
 
   <!-- The vote radio buttons -->
   <button name="vote1" onclick="vote_onclick(1)" onmouseover="vote_onmouseover(1)"
@@ -55,7 +55,7 @@
 
   <!-- Average rating -->
   <label name="rating" width="100%" align="center" visible="false"
-         tooltip="&strRatingToolTip;">&strRating;</label>
+         tooltip="&strRatingToolTip;" color="#888888">&strRating;</label>
 
   <script src="queue.js"/>
   <script src="profile.js"/>
