@@ -18,15 +18,13 @@ limitations under the License.
   <GADGET_NAME>Steamy</GADGET_NAME>
   <GADGET_DESCRIPTION>Check out attrative people</GADGET_DESCRIPTION>
   <GADGET_ABOUT_TEXT>Steamy
-  Copyright 2009 Ron Huang
-  Licensed under the Apache License, Version 2.0
-  http://www.apache.org/licenses/LICENSE-2.0
+Copyright 2009 Ron Huang
+Licensed under the Apache License, Version 2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
-  This gadget allows you to check out attrative people and rate them.
-  The data are collected from http://www.hotornot.com/
+This gadget allows you to check out attrative people and rate them. The data are collected from http://www.hotornot.com/
 
-  The source code for this gadget is located at http://github.com/ronhuang/steamy
-  </GADGET_ABOUT_TEXT>
+The source code for this gadget is located at http://github.com/ronhuang/steamy</GADGET_ABOUT_TEXT>
 
   <strRating>Rating: </strRating>
 

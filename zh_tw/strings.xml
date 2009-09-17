@@ -18,15 +18,13 @@ limitations under the License.
   <GADGET_NAME>Steamy</GADGET_NAME>
   <GADGET_DESCRIPTION>欣賞辣妹、帥哥</GADGET_DESCRIPTION>
   <GADGET_ABOUT_TEXT>Steamy
-  Copyright (c) 2009 Ron Huang
-  Licensed under the Apache License, Version 2.0
-  http://www.apache.org/licenses/LICENSE-2.0
+Copyright (c) 2009 Ron Huang
+Licensed under the Apache License, Version 2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
-  讓您欣賞網路上的辣妹、帥哥。欣賞之餘，還可以對她們投票。
-  資料是從 http://www.hotornot.com/ 擷取。
+讓您欣賞網路上的辣妹、帥哥。欣賞之餘，還可以對她們投票。資料是從 http://www.hotornot.com/ 擷取。
 
-  原始碼可以在 http://github.com/ronhuang/steamy 取得。
-  </GADGET_ABOUT_TEXT>
+原始碼可以在 http://github.com/ronhuang/steamy 取得。</GADGET_ABOUT_TEXT>
 
   <strRating>分數： </strRating>
 
