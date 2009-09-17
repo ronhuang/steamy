@@ -1,10 +1,32 @@
+<!--
+Copyright (C) 2009 Ron Huang
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
 <strings>
   <GADGET_NAME>Steamy</GADGET_NAME>
-  <GADGET_DESCRIPTION>欣賞辣妹、帥哥。</GADGET_DESCRIPTION>
+  <GADGET_DESCRIPTION>欣賞辣妹、帥哥</GADGET_DESCRIPTION>
   <GADGET_ABOUT_TEXT>Steamy
-Copyright (c) 2009 Ron Huang
-讓您欣賞網路上的辣妹、帥哥。欣賞之餘，還可以對她們投票。
-資料是從 http://www.hotornot.com/ 擷取。</GADGET_ABOUT_TEXT>
+  Copyright (c) 2009 Ron Huang
+  Licensed under the Apache License, Version 2.0
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  讓您欣賞網路上的辣妹、帥哥。欣賞之餘，還可以對她們投票。
+  資料是從 http://www.hotornot.com/ 擷取。
+
+  原始碼可以在 http://github.com/ronhuang/steamy 取得。
+  </GADGET_ABOUT_TEXT>
 
   <strRating>分數： </strRating>
 

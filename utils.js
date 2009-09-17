@@ -1,3 +1,7 @@
+// sprintf() implementation for JavaScript.
+// Copied from http://jan.moesen.nu/code/javascript/sprintf-and-printf-in-javascript/.
+// The code is in public domain.
+
 function sprintf() {
     if (!arguments || arguments.length < 1 || !RegExp) {
         return;
