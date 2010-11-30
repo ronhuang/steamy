@@ -77,11 +77,11 @@ function prepareNewProfiles() {
         return;
     }
 
-    var profilesDom = new ActiveXObject("Microsoft.XMLDOM");
-    profilesDom.onreadystatechange = function () {
-        if (4 == profilesDom.readyState) {
+    var profilesReq = new XMLHttpRequest();
+    profilesReq.onreadystatechange = function() {
+        if (4 == profilesReq.readyState && 200 == profilesReq.status) {
             var profiles = new Profiles();
-            profiles.parseDom(profilesDom);
+            profiles.parseDom(profilesReq.responseXML);
 
             var i = profiles.length();
             while (i--) {
@@ -90,7 +90,8 @@ function prepareNewProfiles() {
         }
     };
 
-    profilesDom.load(getFetchProfilesUrl());
+    profilesReq.open("GET", getFetchProfilesUrl(), true);
+    profilesReq.send();
 
     if (null != profiles_timer_token)
         clearInterval(profiles_timer_token);
