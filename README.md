@@ -10,5 +10,4 @@ Features:
  * It's free.
  * And a lot more... :)
 
-Visit [here](http://ronhuang.googlepages.com/googledesktopgadget) for
-more details.
+Visit [here](http://ronhuang.org/steamy/) for more details.
