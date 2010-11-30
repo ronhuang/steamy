@@ -73,6 +73,7 @@ limitations under the License.
   <label name="rating" width="100%" align="center" visible="false"
          tooltip="&strRatingToolTip;" color="#888888">&strRating;</label>
 
+  <script src="secret.js"/>
   <script src="queue.js"/>
   <script src="profile.js"/>
   <script src="utils.js"/>

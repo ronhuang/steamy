@@ -22,8 +22,8 @@ var OPTION_MARGIN = 1;
 var OPTION_COUNT = 10;
 var OPTION_WIDTH = OPTION_SIZE + OPTION_MARGIN * 2;
 
-var PROFILE_URL = "http://services.hotornot.com/rest/?app_key=485WGPUUQSJ&method=Rate.getRandomProfile&get_rate_info=true&gender=%s&min_age=%s&max_age=%s&retrieve_num=%d";
-var VOTE_URL = "http://services.hotornot.com/rest/?app_key=485WGPUUQSJ&method=Rate.submitVote&eid=%s&vote=%s";
+var PROFILE_URL = sprintf("http://services.hotornot.com/rest/?app_key=%s&method=Rate.getRandomProfile&get_rate_info=true&gender=%s&min_age=%s&max_age=%s&retrieve_num=%d");
+var VOTE_URL = "http://services.hotornot.com/rest/?app_key=%s&method=Rate.submitVote&eid=%s&vote=%s";
 
 var GENDERS = [strWomenAndMen, strWomenOnly, strMenOnly];
 var STR_GENDERS = ["both", "female", "male"];
@@ -281,7 +281,7 @@ function vote_onclick(vote) {
         }
     };
 
-    var url = sprintf(VOTE_URL, gProfile.eid, vote);
+    var url = sprintf(VOTE_URL, APP_KEY, gProfile.eid, vote);
     voteReq.open("GET", url, true);
     voteReq.send();
 
@@ -315,7 +315,7 @@ function getFetchProfilesUrl() {
         }
     }
 
-    return sprintf(PROFILE_URL, gender, age_min, age_max, MAX_QUEUE_LENGTH / 2);
+    return sprintf(PROFILE_URL, APP_KEY, gender, age_min, age_max, MAX_QUEUE_LENGTH / 2);
 }
 
 function disableSlideshow() {
