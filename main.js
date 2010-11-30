@@ -22,7 +22,7 @@ var OPTION_MARGIN = 1;
 var OPTION_COUNT = 10;
 var OPTION_WIDTH = OPTION_SIZE + OPTION_MARGIN * 2;
 
-var PROFILE_URL = sprintf("http://services.hotornot.com/rest/?app_key=%s&method=Rate.getRandomProfile&get_rate_info=true&gender=%s&min_age=%s&max_age=%s&retrieve_num=%d");
+var PROFILE_URL = "http://services.hotornot.com/rest/?app_key=%s&method=Rate.getRandomProfile&get_rate_info=true&gender=%s&min_age=%s&max_age=%s&retrieve_num=%d";
 var VOTE_URL = "http://services.hotornot.com/rest/?app_key=%s&method=Rate.submitVote&eid=%s&vote=%s";
 
 var GENDERS = [strWomenAndMen, strWomenOnly, strMenOnly];
