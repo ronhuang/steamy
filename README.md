@@ -10,4 +10,4 @@ Features:
  * It's free.
  * And a lot more... :)
 
-Visit [here](http://ronhuang.org/steamy/) for more details.
+Visit [here](http://ronhuang.org/projects/steamy/) for more details.
